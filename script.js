@@ -1,11 +1,18 @@
-const guessWord = "UMAIR";
+const correctWord = ["U", "M", "A", "I", "R"];
+const guessWord = ["_", "_", "_", "_", "_"];
 
-let guessLetter = prompt('Enter a guess letter').toLocaleUpperCase();
 
-for (index in guessWord) {
-    if (guessLetter == guessWord[index])
-        console.log(guessLetter);
-    else
-        console.log("_");
-    // console.log(guessWord[index]);
-}
+const p = document.querySelector('p');
+const btn = document.querySelector('button');
+
+btn.addEventListener('click', (e) => {
+    let guessLetter = prompt('Enter a guess letter').toLocaleUpperCase();
+
+    for (index in correctWord) {
+        if (guessLetter == correctWord[index]) {
+            guessWord.splice(index, index, guessLetter);
+            p.textContent = guessWord.join(" ");
+        }
+        // console.log(guessWord[index]);
+    }
+})
